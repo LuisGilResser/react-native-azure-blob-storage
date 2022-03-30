@@ -56,7 +56,7 @@ public class FileManager {
             + "AccountKey="+ACCOUNT_KEY+"";
 
     private static CloudBlobContainer getContainer() throws Exception {
-        // Retrieve storage account from connection-string.
+         // Retrieve storage account from connection-string.
 
         CloudStorageAccount storageAccount = CloudStorageAccount
                 .parse(storageConnectionString);
@@ -66,7 +66,12 @@ public class FileManager {
 
         // Get a reference to a container.
         // The container name must be lower case
-        CloudBlobContainer container = blobClient.getContainerReference(CONTAINER_NAME.toLowerCase());
+        CloudBlobContainer container;
+
+        if (!(selectContainer != null))
+            container = blobClient.getContainerReference(CONTAINER_NAME.toLowerCase());
+        else 
+            container = blobClient.getContainerReference(selectContainer.toLowerCase());
 
         return container;
     }

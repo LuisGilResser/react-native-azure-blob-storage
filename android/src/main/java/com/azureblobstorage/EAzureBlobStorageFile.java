@@ -41,6 +41,8 @@ public class EAzureBlobStorageFile extends ReactContextBaseJavaModule{
 
         final String name = options.hasKey("fileName") ? options.getString("fileName") : null;
         String filePath = options.hasKey("filePath") ? options.getString("filePath") : null;
+        //Choose a container
+        String selectContainer = options.hasKey("selectContainer") ? options.getString("selectContainer") : null;
         final String contentType = options.hasKey("contentType") ? options.getString("contentType") : null;
 
         try {
@@ -62,7 +64,8 @@ public class EAzureBlobStorageFile extends ReactContextBaseJavaModule{
                         handler.post(new Runnable() {
 
                             public void run() {
-                                Toast.makeText(ctx, "Image Uploaded Successfully...", Toast.LENGTH_SHORT).show();
+                                //Uncomment to show toast successfully
+                                //Toast.makeText(ctx, "Image Uploaded Successfully...", Toast.LENGTH_SHORT).show();
                                 promise.resolve(imageName);
                             }
                         });
