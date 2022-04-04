@@ -58,7 +58,7 @@ public class EAzureBlobStorageFile extends ReactContextBaseJavaModule{
 
                     try {
 
-                        final String imageName = FileManager.UploadFile(imageStream, imageLength,name, contentType );
+                        final String imageName = FileManager.UploadFile(imageStream, imageLength,name, contentType, selectContainer);
 
 
                         handler.post(new Runnable() {
