@@ -58,7 +58,7 @@ public class EAzureBlobStorageFile extends ReactContextBaseJavaModule{
 
                     try {
 
-                        final String imageName = EAzureBlobStorageFile.SAS ?  FileManager.UploadFileSas(imageStream, imageLength,name, contentType ) : FileManager.UploadFile(imageStream, imageLength,name, contentType );
+                        final String imageName = FileManager.UploadFile(imageStream, imageLength,name, contentType );
 
 
                         handler.post(new Runnable() {
@@ -89,10 +89,10 @@ public class EAzureBlobStorageFile extends ReactContextBaseJavaModule{
     }
 
     @ReactMethod
-    public void configure(String account_name, String account_key, String constainer_name, boolean sas_token ){
+    public void configure(String account_name, String account_key, String constainer_name){
         this.ACCOUNT_NAME = account_name;
         this.ACCOUNT_KEY = account_key;
         this.CONTAINER_NAME = constainer_name;
-        this.SAS = sas_token;
+        //this.SAS = sas_token;
     }
 }
