@@ -5,7 +5,7 @@ NSString *ACCOUNT_NAME = @"account_name";
 NSString *ACCOUNT_KEY = @"account_key";
 NSString *CONTAINER_NAME = @"container_name";
 NSString *CONNECTION_STRING = @"";
-
+bool *SAS = false;
 static NSString *const _filePath = @"filePath";
 static NSString *const _contentType = @"contentType";
 static NSString *const _fileName = @"fileName";
@@ -15,7 +15,7 @@ RCT_EXPORT_METHOD(uploadFile:(NSDictionary *)options
          findEventsWithResolver:(RCTPromiseResolveBlock)resolve
          rejecter:(RCTPromiseRejectBlock)reject)
 {
-  if(SAS){
+  if(!SAS){
     [self uploadBlobToContainer: options rejecter:reject resolver:resolve];
   }else{
     [self uploadBlobToContainerSas: options rejecter:reject resolver:resolve];
